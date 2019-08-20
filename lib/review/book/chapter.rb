@@ -122,6 +122,12 @@ module ReVIEW
         on_file?(@book.read_postdef)
       end
 
+      def make_indexes
+        index_builder = ReVIEW::IndexBuilder.new
+        compiler = ReVIEW::Compiler.new(index_builder)
+        compiler.compile(self)
+      end
+
       private
 
       def on_file?(contents)
