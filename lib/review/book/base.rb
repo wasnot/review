@@ -317,8 +317,9 @@ module ReVIEW
         if catalog
           return catalog.parts_with_chaps.map do |entry|
             if entry.is_a?(Hash)
+              num_c = 0
               chaps = entry.values.first.map do |chap|
-                chap = Chapter.new(self, num += 1, chap, File.join(contentdir, chap))
+                chap = Chapter.new(self, num_c += 1, chap, File.join(contentdir, chap))
                 chap
               end
               Part.new(self, part += 1, chaps, read_part[part - 1])
